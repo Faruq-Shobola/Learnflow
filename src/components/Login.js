@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import smallTeamDiscussionIdeas from "../assets/small-team-discussing-ideas.png";
 
 const Login = () => {
   return (
-    <section className="relative flex flex-wrap  max-auto">
+    <section className="relative flex flex-wrap items-center max-auto">
       <div className="w-full p-8 sm:px-8 lg:w-1/2 flex flex-col gap-10 border rounded-lg border-gray-200">
         <div className="">
           <p className="text-lg">Welcome!</p>
@@ -89,16 +90,22 @@ const Login = () => {
             Sign in
           </button>
 
-          <p className="text-center text-sm text-gray-500">
+          <p className="text-center text-sm text-gray-900">
             Don't have an account?
-            <Link className="underline" to="/register">
+            <Link className="font-semibold ml-2" to="/register">
               Register
             </Link>
           </p>
         </form>
       </div>
 
-      <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2"></div>
+      <div className="hidden md:flex items-center relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+        <img
+          src={smallTeamDiscussionIdeas}
+          alt="Small team discussion ideas"
+          className="object-cover w-full h-full"
+        />
+      </div>
     </section>
   );
 };
