@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import NewCourse from "./components/NewCourse";
 import CourseDetail from "./components/CourseDetails";
 import EditProfile from "./components/EditProfile";
+import AllCourses from "./components/AllCourses";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/new-course" element={<NewCourse />} />
         <Route path="/course-details" element={<CourseDetail />} />
         <Route path="/settings" element={<EditProfile />} />
+        <Route path="/courses" element={<AllCourses />} />
       </Route>
     </Routes>
   );
