@@ -1,7 +1,31 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import smallTeamDiscussionIdeas from "../assets/small-team-discussing-ideas.png";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-const Reg = () => {
+const Register = () => {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      // Redirect to Login after registration
+      navigate("/login");
+    } catch (error) {
+      alert(`Error registering: ${error.message}`);
+    }
+  };
+
   return (
     <section className="relative flex flex-wrap items-center max-auto">
       <div className="w-full p-8 sm:px-8 lg:w-1/2 flex flex-col gap-8 border rounded-lg border-gray-200">
@@ -11,7 +35,7 @@ const Reg = () => {
           <h1 className="mt-6 text-2xl font-bold sm:text-3xl">Sign up to</h1>
           <p className="mt-2 text-gray-500">Lorem ipsum is simply</p>
         </div>
-        <form action="#" className="space-y-6">
+        <form onSubmit={handleRegister} className="space-y-6">
           <div>
             <label for="email" className="capitalize">
               Email
@@ -22,6 +46,7 @@ const Reg = () => {
                 type="email"
                 className="w-full rounded- border-2 border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter your email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -36,6 +61,7 @@ const Reg = () => {
                 type="text"
                 className="w-full rounded- border-2 border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter your username"
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
           </div>
@@ -50,6 +76,7 @@ const Reg = () => {
                 type="password"
                 className="w-full rounded- border-2 border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter your password"
+                onChange={(e) => setPassword(e.target.value)}
               />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -87,6 +114,7 @@ const Reg = () => {
                 type="password"
                 className="w-full rounded- border-2 border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Confirm your password"
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -141,4 +169,4 @@ const Reg = () => {
   );
 };
 
-export default Reg;
+export default Register;

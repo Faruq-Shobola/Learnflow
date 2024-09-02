@@ -25,10 +25,8 @@ const AddCourseModal = ({ closeModal }) => {
           onClick={() => closeModal()}
           className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
         >
-         <FaTimes />
+          <FaTimes />
         </button>
-
-        <h2 className="text-2xl font-bold mb-6">Add New Course</h2>
 
         {/* Form */}
         <form onSubmit={handleSubmit}>

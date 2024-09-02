@@ -1,7 +1,25 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import smallTeamDiscussionIdeas from "../assets/small-team-discussing-ideas.png";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // Redirect to Dashboard after login
+      navigate("/dashboard");
+    } catch (error) {
+      alert(`Error logging in: ${error.message}`);
+    }
+  };
+
   return (
     <section className="relative flex flex-wrap items-center max-auto">
       <div className="w-full p-8 sm:px-8 lg:w-1/2 flex flex-col gap-8 border rounded-lg border-gray-200">
@@ -11,7 +29,7 @@ const Login = () => {
           <h1 className="mt-6 text-2xl font-bold sm:text-3xl">Sign in to</h1>
           <p className="mt-2 text-gray-500">Lorem ipsum is simply</p>
         </div>
-        <form action="#" className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <label for="email" className="capitalize">
               Email
@@ -22,6 +40,7 @@ const Login = () => {
                 type="email"
                 className="w-full rounded- border-2 border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -36,6 +55,7 @@ const Login = () => {
                 type="password"
                 className="w-full rounded- border-2 border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter password"
+                onChange={(e) => setPassword(e.target.value)}
               />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">

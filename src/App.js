@@ -8,6 +8,7 @@ import NewCourse from "./components/NewCourse";
 import CourseDetail from "./components/CourseDetails";
 import EditProfile from "./components/EditProfile";
 import AllCourses from "./components/AllCourses";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
@@ -18,11 +19,46 @@ function App() {
       </Route>
 
       <Route element={<DashboardLayout />}>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/new-course" element={<NewCourse />} />
-        <Route path="/course-details" element={<CourseDetail />} />
-        <Route path="/settings" element={<EditProfile />} />
-        <Route path="/courses" element={<AllCourses />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/new-course"
+          element={
+            <PrivateRoute>
+              <NewCourse />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/course-details"
+          element={
+            <PrivateRoute>
+              <CourseDetail />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <PrivateRoute>
+              <EditProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/courses"
+          element={
+            <PrivateRoute>
+              <AllCourses />
+            </PrivateRoute>
+          }
+        />
       </Route>
     </Routes>
   );

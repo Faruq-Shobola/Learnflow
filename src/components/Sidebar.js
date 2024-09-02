@@ -4,16 +4,33 @@ import Dashboard from "../assets/icons/element.png";
 import Setting from "../assets/icons/setting-2.png";
 import Edit from "../assets/icons/edit.png";
 import Frame from "../assets/icons/frame.png";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/");
+        alert("Signed out successfully");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
   return (
     <div className="bg-white h-screen w-60 p-4 shadow fixed">
       <div className="text-lg font-bold mb-8">
-        <Link to="/">LearnFlow</Link>
+        <Link to="/dashboard">LearnFlow</Link>
       </div>
       <ul>
         <li className="flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition">
-          <Link to="/" className="flex items-center px-1.5 py-3">
+          <Link to="/dashboard" className="flex items-center px-1.5 py-3">
             <img src={Dashboard} alt="Dashboard" className="w-6 h-6" />
             <span className="ml-2">Dashboard</span>
           </Link>
@@ -37,13 +54,13 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link
-            to="#"
-            className="flex items-center text-gray-700 hover:text-gray-900"
+          <button
+            onClick={handleLogout}
+            className="flex items-center text-gray-700 hover:text-gray-900 cursor-pointer"
           >
             <img src={Frame} alt="Log out" className="w-6 h-6" />
             <span className="ml-2">Log out</span>
-          </Link>
+          </button>
         </li>
       </ul>
     </div>
