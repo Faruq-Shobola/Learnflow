@@ -36,16 +36,16 @@ const Dashboard = () => {
           <h2 className="text-2xl font-semibold mb-4">
             Let's continue Learning!
           </h2>
-          <div className="flex gap-6 md:flex-nowrap">
+          <div className="flex flex-wrap gap-6 lg:flex-nowrap">
             {continueLearningCourses.map((course) => (
               <div
                 key={course.id}
-                className="flex bg-white shadow-md rounded-lg overflow-hidden"
+                className="flex flex-col sm:flex-row bg-white shadow-md rounded-lg overflow-hidden"
               >
                 <img
                   src={course.image}
                   alt={course.title}
-                  className="w-40 h-40 object-cover"
+                  className="w-full sm:w-40 h-40 object-cover"
                 />
                 <div className="p-4">
                   <h3 className="text-lg font-semibold">{course.title}</h3>
