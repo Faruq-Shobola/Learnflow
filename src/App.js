@@ -5,6 +5,7 @@ import AuthLayout from "./components/layout/AuthLayout";
 import DashboardLayout from "./components/layout/DashboardLayout";
 import Register from "./components/Register";
 import NewCourse from "./components/NewCourse";
+import CourseDetail from "./components/CourseDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route element={<DashboardLayout />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/new-course" element={<NewCourse />} />
+        <Route path="/course-details" element={<CourseDetail />} />
       </Route>
     </Routes>
   );
