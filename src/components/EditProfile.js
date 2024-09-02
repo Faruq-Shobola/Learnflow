@@ -17,7 +17,7 @@ const EditProfile = () => {
 
   return (
     <div className="mx-auto mt-8">
-      <h2 className="text-2xl font-bold mb-6">Edit Profile</h2>
+      <h2 className="text-2xl font-bold mb-6 underline">Edit Profile</h2>
       <form onSubmit={handleSubmit}>
         {/* Edit Details Section */}
         <div className="mb-8">
@@ -80,7 +80,10 @@ const EditProfile = () => {
               placeholder="Current Password"
               required
             />
-            <Link to="#" className="text-black underline text-sm mt-1 inline-block text-right w-full">
+            <Link
+              to="#"
+              className="text-black underline text-sm mt-1 inline-block text-right w-full"
+            >
               Can't remember password?
             </Link>
           </div>
@@ -124,12 +127,12 @@ const EditProfile = () => {
         </div>
 
         {/* View All Courses Button */}
-        <button
-          type="button"
+        <Link
+          to="/courses"
           className="w-auto px-5 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 rounded-lg"
         >
           View all courses
-        </button>
+        </Link>
       </form>
     </div>
   );

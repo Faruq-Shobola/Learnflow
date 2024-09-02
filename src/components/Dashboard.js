@@ -1,6 +1,7 @@
 import CoursesGrid from "./CoursesGrid";
 import course1 from "../assets/course1.png";
 import course2 from "../assets/course3.png";
+import { Link } from "react-router-dom";
 
 // Sample data for "Continue Learning" courses
 const continueLearningCourses = [
@@ -74,6 +75,14 @@ const Dashboard = () => {
         </div>
         {/* Add language course components here */}
         <CoursesGrid />
+        <div className="flex items-center justify-center mt-5">
+          <Link
+            to="/courses"
+            className="px-5 text-center bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 rounded-lg"
+          >
+            View all courses
+          </Link>
+        </div>
       </div>
     </div>
   );

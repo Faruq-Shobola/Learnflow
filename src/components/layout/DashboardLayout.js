@@ -8,7 +8,7 @@ const DashboardLayout = () => {
       <Sidebar />
       <div className="flex flex-col flex-grow">
         <Navbar />
-        <div className="">
+        <div className="ml-60">
           <div className="px-10 py-5 max-w-screen-xl mx-auto w-full">
             <Outlet />
           </div>
