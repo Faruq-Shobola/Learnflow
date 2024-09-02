@@ -8,7 +8,7 @@ import Frame from '../assets/icons/frame.png'
 
 const Sidebar = () => {
   return (
-    <div className="bg-white h-screen w-60 p-4 shadow">
+    <div className="bg-white h-screen w-60 p-4 shadow relative">
       <div className="text-lg font-bold mb-8">LearnFlow</div>
       <ul>
         <li className="flex gap-4 mb-4 px-1.5 py-3 text-black hover:bg-black hover:text-white rounded-md transition">
