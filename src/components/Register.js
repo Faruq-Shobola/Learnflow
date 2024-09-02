@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import smallTeamDiscussionIdeas from "../assets/small-team-discussing-ideas.png";
-import { auth } from "../firebase";
+import { collection, doc, setDoc } from "firebase/firestore";
+import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Register = () => {
@@ -18,7 +19,18 @@ const Register = () => {
       return;
     }
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      const userDoc = collection(db, "users");
+      await setDoc(doc(userDoc, userCredential.user.uid), {
+        username,
+        email,
+      });
+
       // Redirect to Login after registration
       navigate("/login");
     } catch (error) {

@@ -1,19 +1,59 @@
 import { useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import { collection, addDoc } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db, storage } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const AddCourseModal = ({ closeModal }) => {
-  const [courseTitle, setCourseTitle] = useState("");
-  const [courseDescription, setCourseDescription] = useState("");
-  const [courseImage, setCourseImage] = useState(null);
-  const [price, setPrice] = useState(0.0);
+  const [courseData, setCourseData] = useState({
+    title: "",
+    description: "",
+    price: 0,
+    imageUrl: "",
+  });
+  const [imageFile, setImageFile] = useState(null);
+  const navigate = useNavigate();
 
-  const handleImageChange = (e) => {
-    setCourseImage(e.target.files[0]);
+  // Handle input change
+  const handleChange = (e) => {
+    setCourseData({ ...courseData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Handle file change
+  const handleFileChange = (e) => {
+    setImageFile(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+
+    try {
+      let imageUrl = "";
+      if (imageFile) {
+        // Upload image to Firebase Storage
+        const imageRef = ref(storage, `course-images/${imageFile.name}`);
+        await uploadBytes(imageRef, imageFile);
+        // Get URL after upload
+        imageUrl = await getDownloadURL(imageRef);
+      }
+
+      // Update course data with the image URL
+      const newCourseData = {
+        ...courseData,
+        imageUrl: imageUrl,
+      };
+
+      // Add course to  with image URL
+      await addDoc(collection(db, "courses"), newCourseData);
+
+      alert("Course added successfully!");
+      // Navigate to courses page after adding
+      navigate("/courses");
+    } catch (error) {
+      console.error("Error adding course:", error.message);
+      alert("Failed to add course. Please try again.");
+    }
     closeModal();
   };
 
@@ -35,10 +75,12 @@ const AddCourseModal = ({ closeModal }) => {
             <label className="block text-gray-700">Course Title</label>
             <input
               type="text"
-              value={courseTitle}
-              onChange={(e) => setCourseTitle(e.target.value)}
+              name="title"
+              value={courseData.title}
+              onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
               placeholder="Add course title"
+              required
             />
           </div>
 
@@ -47,10 +89,12 @@ const AddCourseModal = ({ closeModal }) => {
             <label className="block text-gray-700">Course Description</label>
             <input
               type="text"
-              value={courseDescription}
-              onChange={(e) => setCourseDescription(e.target.value)}
+              name="description"
+              value={courseData.description}
+              onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
               placeholder="Add course description"
+              required
             />
           </div>
 
@@ -59,8 +103,9 @@ const AddCourseModal = ({ closeModal }) => {
             <label className="block text-gray-700">Course Image</label>
             <input
               type="file"
-              onChange={handleImageChange}
+              onChange={handleFileChange}
               className="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              required
             />
           </div>
 
@@ -69,11 +114,13 @@ const AddCourseModal = ({ closeModal }) => {
             <label className="block text-gray-700">Add Price</label>
             <input
               type="number"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              name="price"
+              value={courseData.price}
+              onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
               placeholder="0.00"
               step="5"
+              required
             />
           </div>
 

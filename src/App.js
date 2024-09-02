@@ -9,10 +9,12 @@ import CourseDetail from "./components/CourseDetails";
 import EditProfile from "./components/EditProfile";
 import AllCourses from "./components/AllCourses";
 import PrivateRoute from "./PrivateRoute";
+import Home from "./components/Home";
 
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
