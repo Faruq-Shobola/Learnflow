@@ -7,10 +7,12 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 const Login = () => {
   const [email, setEmail] = useState(""); // State variable for email input
   const [password, setPassword] = useState(""); // State variable for password input
+  const [loading, setLoading] = useState(false); // State variable for loading state
   const navigate = useNavigate(); // Hook for navigating to different routes
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password); // Sign in with email and password using Firebase auth
       // Redirect to Dashboard after login
@@ -18,6 +20,7 @@ const Login = () => {
     } catch (error) {
       alert(`Error logging in: ${error.message}`);
     }
+    setLoading(false);
   };
 
   return (
@@ -105,7 +108,10 @@ const Login = () => {
 
           <button
             type="submit"
-            className="block w-full rounded-md bg-black px-5 py-3 text-sm font-medium text-white"
+            className={`block w-full rounded-md  px-5 py-3 text-sm font-medium text-white ${
+              loading ? `bg-gray-300` : `bg-black`
+            }`}
+            disabled={loading}
           >
             Sign in
           </button>

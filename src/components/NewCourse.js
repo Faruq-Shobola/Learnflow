@@ -17,7 +17,7 @@ const NewCourse = () => {
     <div className="mt-8">
       <h2 className="text-2xl font-bold mb-5">Create a new course</h2>
       <div
-        className="flex justify-center items-center w-[551px] h-[358px] bg-white rounded-md p-5"
+        className="flex justify-center items-center w-full h-96 md:w-[551px] md:h-[358px] bg-white rounded-md p-5"
         onClick={() => setShowModal(true)}
       >
         <div className="bg-black rounded-full p-2">

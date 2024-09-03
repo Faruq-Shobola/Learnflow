@@ -11,11 +11,13 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   // Function to handle registration
   const handleRegister = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
@@ -40,6 +42,7 @@ const Register = () => {
     } catch (error) {
       alert(`Error registering: ${error.message}`);
     }
+    setLoading(false);
   };
 
   return (
@@ -160,7 +163,8 @@ const Register = () => {
 
           <button
             type="submit"
-            className="block w-full rounded-md bg-black px-5 py-3 text-sm font-medium text-white"
+            className={`block w-full rounded-md  px-5 py-3 text-sm font-medium text-white ${loading ? `bg-gray-300` : `bg-black`}`}
+            disabled={loading}
           >
             Register
           </button>

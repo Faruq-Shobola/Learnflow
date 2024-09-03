@@ -3,7 +3,6 @@ import { FaUserLarge } from "react-icons/fa6";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { TbBriefcaseFilled } from "react-icons/tb";
 
-
 // Component for rendering the FeaturesSection
 const FeaturesSection = () => {
   return (

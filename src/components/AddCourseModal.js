@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddCourseModal = ({ closeModal }) => {
   // State variables
+  const [loading, setLoading] = useState(false);
   const [courseData, setCourseData] = useState({
     title: "",
     description: "",
@@ -29,7 +30,7 @@ const AddCourseModal = ({ closeModal }) => {
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       let imageUrl = "";
       if (imageFile) {
@@ -56,11 +57,12 @@ const AddCourseModal = ({ closeModal }) => {
       console.error("Error adding course:", error.message);
       alert("Failed to add course. Please try again.");
     }
+    setLoading(false);
     closeModal();
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-800 bg-opacity-25 flex items-center justify-center">
+    <div className="fixed inset-0 bg-gray-800 bg-opacity-25 flex items-center justify-center px-8">
       <div className="bg-white w-full max-w-lg p-8 rounded-lg shadow-lg relative">
         {/* Close Button */}
         <button
@@ -129,7 +131,10 @@ const AddCourseModal = ({ closeModal }) => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-black hover:bg-transparent text-white hover:text-black border border-black font-semibold py-2 rounded-md"
+            className={`block w-full rounded-md  px-5 py-3 text-sm font-medium text-white hover:text-black border  ${
+              loading ? `bg-gray-300 border-gray-300` : `bg-black border-black`
+            }`}
+            disabled={loading}
           >
             Save Course
           </button>
