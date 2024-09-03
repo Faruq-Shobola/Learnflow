@@ -1,5 +1,7 @@
+// Importing the image from the specified path
 import image from "../../assets/landingpage/Dashboard 2.png";
 
+// Defining the CTASection component
 const CTASection = () => {
   return (
     <section className="py-16 px-8">
@@ -25,4 +27,5 @@ const CTASection = () => {
   );
 };
 
+// Exporting the CTASection component as the default export
 export default CTASection;

@@ -1,7 +1,10 @@
+// Importing the required images
 import Ecllipse1 from "../../assets/landingpage/ellipse1.png";
 import Ecllipse2 from "../../assets/landingpage/ellipse6.png";
 import Ecllipse3 from "../../assets/landingpage/ellipse5.png";
 
+
+// Array of testimonials
 const testimonials = [
   {
     id: 1,
@@ -33,6 +36,7 @@ const testimonials = [
   },
 ];
 
+// TestimonialsSection component
 const TestimonialsSection = () => {
   return (
     <section className="bg-primaryblack text-white py-16">
@@ -43,8 +47,7 @@ const TestimonialsSection = () => {
             Learners like you achieve their goals through our courses
           </h2>
           <p className="mt-4 text-lg md:text-xl px-10 text-gray-300">
-            We believe everyone has something to give. Share your skills &
-            experience with students around the world by teaching free or paid.
+            We believe everyone has something to give. Share your skills & experience with students around the world by teaching free or paid.
           </p>
         </div>
         {/* Masonry Grid */}

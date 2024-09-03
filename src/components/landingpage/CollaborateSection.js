@@ -1,7 +1,9 @@
+// Importing the necessary dependencies
 import { Link } from "react-router-dom";
 import Frame1 from "../../assets/landingpage/Frame1.png";
 import Frame2 from "../../assets/landingpage/Frame2.png";
 
+// Defining the CollaborateSection component
 const CollaborateSection = () => {
   return (
     <section className="py-12 md:py-16 px-8 flex flex-col gap-12 md:gap-16">
@@ -58,4 +60,5 @@ const CollaborateSection = () => {
   );
 };
 
+// Exporting the CollaborateSection component
 export default CollaborateSection;
