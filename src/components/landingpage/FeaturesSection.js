@@ -1,7 +1,10 @@
+// Importing necessary icons from react-icons library
 import { FaUserLarge } from "react-icons/fa6";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { TbBriefcaseFilled } from "react-icons/tb";
 
+
+// Component for rendering the FeaturesSection
 const FeaturesSection = () => {
   return (
     <section className="py-16 px-8 bg-white">
@@ -31,6 +34,7 @@ const FeaturesSection = () => {
   );
 };
 
+// Component for rendering a feature card
 const FeatureCard = ({ title, description, icon }) => (
   <div className="flex flex-col justify-between bg-gray-100 p-7 rounded-lg shadow">
     <div className="text-left">

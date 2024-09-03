@@ -1,7 +1,7 @@
-import CoursesGrid from "./CoursesGrid";
-import course1 from "../assets/course1.png";
-import course2 from "../assets/course3.png";
-import { Link } from "react-router-dom";
+import CoursesGrid from "./CoursesGrid"; // Importing the CoursesGrid component
+import course1 from "../assets/course1.png"; // Importing the image for course1
+import course2 from "../assets/course3.png"; // Importing the image for course2
+import { Link } from "react-router-dom"; // Importing the Link component from react-router-dom
 
 // Sample data for "Continue Learning" courses
 const continueLearningCourses = [
@@ -9,13 +9,13 @@ const continueLearningCourses = [
     id: 1,
     title: "Introduction to CSS language",
     description: "Learn different programming languages and its usefulness",
-    image: course2,
+    image: course2, // Using the imported image for course2
   },
   {
     id: 2,
     title: "Introduction to JavaScript language",
     description: "Learn different programming languages and its usefulness",
-    image: course1,
+    image: course1, // Using the imported image for course1
   },
 ];
 

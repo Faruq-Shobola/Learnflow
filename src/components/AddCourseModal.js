@@ -6,6 +6,7 @@ import { db, storage } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 const AddCourseModal = ({ closeModal }) => {
+  // State variables
   const [courseData, setCourseData] = useState({
     title: "",
     description: "",
@@ -25,6 +26,7 @@ const AddCourseModal = ({ closeModal }) => {
     setImageFile(e.target.files[0]);
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -44,7 +46,7 @@ const AddCourseModal = ({ closeModal }) => {
         imageUrl: imageUrl,
       };
 
-      // Add course to  with image URL
+      // Add course to Firestore with image URL
       await addDoc(collection(db, "courses"), newCourseData);
 
       alert("Course added successfully!");

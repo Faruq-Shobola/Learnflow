@@ -5,14 +5,14 @@ import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [email, setEmail] = useState(""); // State variable for email input
+  const [password, setPassword] = useState(""); // State variable for password input
+  const navigate = useNavigate(); // Hook for navigating to different routes
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password); // Sign in with email and password using Firebase auth
       // Redirect to Dashboard after login
       navigate("/dashboard");
     } catch (error) {
@@ -40,7 +40,7 @@ const Login = () => {
                 type="email"
                 className="w-full rounded- border-2 border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)} // Update email state on input change
               />
             </div>
           </div>
@@ -55,7 +55,7 @@ const Login = () => {
                 type="password"
                 className="w-full rounded- border-2 border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)} // Update password state on input change
               />
 
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">

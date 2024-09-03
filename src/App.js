@@ -17,8 +17,12 @@ import RestrictedRoute from "./components/middleware/RestrictedRoute";
 function App() {
   return (
     <Routes>
+      {/* Public routes */}
       <Route path="/" element={<Home />} />
+
+      {/* Routes with authentication layout */}
       <Route element={<AuthLayout />}>
+        {/* Restricted routes */}
         <Route
           path="/login"
           element={
@@ -37,7 +41,9 @@ function App() {
         />
       </Route>
 
+      {/* Routes with dashboard layout */}
       <Route element={<DashboardLayout />}>
+        {/* Private routes */}
         <Route
           path="/dashboard"
           element={
@@ -87,6 +93,8 @@ function App() {
           }
         />
       </Route>
+
+      {/* 404 Not Found route */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

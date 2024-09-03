@@ -6,12 +6,14 @@ import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Register = () => {
+  // State variables
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
+  // Function to handle registration
   const handleRegister = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -19,12 +21,14 @@ const Register = () => {
       return;
     }
     try {
+      // Create user with email and password
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
 
+      // Add user data to Firestore
       const userDoc = collection(db, "users");
       await setDoc(doc(userDoc, userCredential.user.uid), {
         username,
@@ -49,7 +53,7 @@ const Register = () => {
         </div>
         <form onSubmit={handleRegister} className="space-y-6">
           <div>
-            <label for="email" className="capitalize">
+            <label htmlFor="email" className="capitalize">
               Email
             </label>
 
@@ -64,8 +68,8 @@ const Register = () => {
           </div>
 
           <div>
-            <label for="email" className="capitalize">
-              username
+            <label htmlFor="email" className="capitalize">
+              Username
             </label>
 
             <div className="relative">
@@ -79,7 +83,7 @@ const Register = () => {
           </div>
 
           <div>
-            <label for="password" className="capitalize">
+            <label htmlFor="password" className="capitalize">
               Password
             </label>
 
@@ -100,15 +104,15 @@ const Register = () => {
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                   />
                 </svg>
@@ -117,8 +121,8 @@ const Register = () => {
           </div>
 
           <div>
-            <label for="password" className="capitalize">
-              confirm Password
+            <label htmlFor="password" className="capitalize">
+              Confirm Password
             </label>
 
             <div className="relative">
@@ -138,15 +142,15 @@ const Register = () => {
                   stroke="currentColor"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                   />
                 </svg>

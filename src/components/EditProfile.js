@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const EditProfile = () => {
+  // State variables for form inputs
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [nickname, setNickname] = useState("");

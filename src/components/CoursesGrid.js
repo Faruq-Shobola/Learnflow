@@ -3,19 +3,22 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { Link } from "react-router-dom";
 
+// This component renders a grid of courses fetched from Firestore
+
 const CoursesGrid = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
+    // Fetch courses from Firestore
     const fetchCourses = async () => {
       try {
         const coursesCollectionRef = collection(db, "courses");
-        const coursesSnapshot = await getDocs(coursesCollectionRef); // Fetch all documents from "courses" collection
+        const coursesSnapshot = await getDocs(coursesCollectionRef);
         const coursesList = coursesSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        setCourses(coursesList); // Update state with fetched courses
+        setCourses(coursesList);
       } catch (error) {
         console.error("Error fetching courses:", error.message);
       }
@@ -26,6 +29,7 @@ const CoursesGrid = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {/* Render each course as a card */}
       {courses.map((course) => (
         <div
           key={course.id}

@@ -2,13 +2,17 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import AddCourseModal from "../components/AddCourseModal";
 
+// Define a functional component called NewCourse
 const NewCourse = () => {
+  // Define a state variable called showModal and its setter function setShowModal
   const [showModal, setShowModal] = useState(false);
 
+  // Define a function to handle closing the modal
   const handleCloseModal = () => {
     setShowModal(false);
   };
 
+  // Render the component
   return (
     <div className="mt-8">
       <h2 className="text-2xl font-bold mb-5">Create a new course</h2>
@@ -27,4 +31,5 @@ const NewCourse = () => {
   );
 };
 
+// Export the NewCourse component as the default export of the module
 export default NewCourse;
