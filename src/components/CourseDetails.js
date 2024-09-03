@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { collection, getDoc, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
 
 const CourseDetail = () => {
@@ -31,7 +31,9 @@ const CourseDetail = () => {
     <div className="flex flex-col gap-8 mt-8">
       <Link to="/courses" className="flex gap-4 items-center">
         <FaArrowLeft />
-        <span className="text-black text-xl font-semibold">Back to Courses</span>
+        <span className="text-black text-xl font-semibold">
+          Back to Courses
+        </span>
       </Link>
       <div className="w-full">
         <img

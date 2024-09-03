@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Book from "../assets/icons/book.png";
 import Dashboard from "../assets/icons/element.png";
 import Setting from "../assets/icons/setting-2.png";
@@ -29,30 +29,58 @@ const Sidebar = () => {
         <Link to="/dashboard">LearnFlow</Link>
       </div>
       <ul>
-        <li className="flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition">
-          <Link to="/dashboard" className="flex items-center px-1.5 py-3">
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive
+              ? `flex gap-4 mb-4 bg-black text-white rounded-md transition`
+              : `flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition`
+          }
+        >
+          <div className="flex items-center px-1.5 py-3">
             <img src={Dashboard} alt="Dashboard" className="w-6 h-6" />
             <span className="ml-2">Dashboard</span>
-          </Link>
-        </li>
-        <li className="flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition">
-          <Link to="/courses" className="flex items-center px-1.5 py-3">
+          </div>
+        </NavLink>
+        <NavLink
+          to="/courses"
+          className={({ isActive }) =>
+            isActive
+              ? `flex gap-4 mb-4 bg-black text-white rounded-md transition`
+              : `flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition`
+          }
+        >
+          <div className="flex items-center px-1.5 py-3">
             <img src={Book} alt="Courses" className="w-6 h-6" />
             <span className="ml-2">All courses</span>
-          </Link>
-        </li>
-        <li className="flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition">
-          <Link to="/new-course" className="flex items-center px-1.5 py-3">
+          </div>
+        </NavLink>
+        <NavLink
+          to="/new-course"
+          className={({ isActive }) =>
+            isActive
+              ? `flex gap-4 mb-4 bg-black text-white rounded-md transition`
+              : `flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition`
+          }
+        >
+          <div className="flex items-center px-1.5 py-3">
             <img src={Edit} alt="Course Builder" className="w-6 h-6" />
             <span className="ml-2">Course Builder</span>
-          </Link>
-        </li>
-        <li className="flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition">
-          <Link to="/settings" className="flex items-center px-1.5 py-3">
+          </div>
+        </NavLink>
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            isActive
+              ? `flex gap-4 mb-4 bg-black text-white rounded-md transition`
+              : `flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition`
+          }
+        >
+          <div className="flex items-center px-1.5 py-3">
             <img src={Setting} alt="Settings" className="w-6 h-6" />
             <span className="ml-2">Settings</span>
-          </Link>
-        </li>
+          </div>
+        </NavLink>
         <li>
           <button
             onClick={handleLogout}
