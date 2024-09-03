@@ -72,6 +72,7 @@ const Sidebar = () => {
                 ? `flex gap-4 mb-4 bg-black text-white rounded-md transition`
                 : `flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition`
             }
+            onClick={toggleSidebar}
           >
             <div className="flex items-center px-1.5 py-3">
               <img src={Dashboard} alt="Dashboard" className="w-6 h-6" />{" "}
@@ -86,6 +87,7 @@ const Sidebar = () => {
                 ? `flex gap-4 mb-4 bg-black text-white rounded-md transition`
                 : `flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition`
             }
+            onClick={toggleSidebar}
           >
             <div className="flex items-center px-1.5 py-3">
               <img src={Book} alt="Courses" className="w-6 h-6" />{" "}
@@ -100,6 +102,7 @@ const Sidebar = () => {
                 ? `flex gap-4 mb-4 bg-black text-white rounded-md transition`
                 : `flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition`
             }
+            onClick={toggleSidebar}
           >
             <div className="flex items-center px-1.5 py-3">
               <img src={Edit} alt="Course Builder" className="w-6 h-6" />{" "}
@@ -114,6 +117,7 @@ const Sidebar = () => {
                 ? `flex gap-4 mb-4 bg-black text-white rounded-md transition`
                 : `flex gap-4 mb-4 text-black hover:bg-black hover:text-white rounded-md transition`
             }
+            onClick={toggleSidebar}
           >
             <div className="flex items-center px-1.5 py-3">
               <img src={Setting} alt="Settings" className="w-6 h-6" />{" "}
