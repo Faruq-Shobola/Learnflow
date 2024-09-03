@@ -66,7 +66,7 @@ const CourseDetail = () => {
                 <span>16</span>
               </li>
             </ul>
-            <button className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-4 rounded-full">
+            <button className="w-full bg-primaryyellow hover:bg-yellow-600 text-white font-semibold py-4 rounded-full">
               Buy Now
             </button>
           </div>

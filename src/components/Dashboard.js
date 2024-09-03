@@ -53,7 +53,7 @@ const Dashboard = () => {
                   {/* Progress Bar */}
                   <div className="mt-4 bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-yellow-500 h-2 rounded-full"
+                      className="bg-primaryyellow h-2 rounded-full"
                       style={{ width: "70%" }}
                     ></div>
                   </div>
@@ -78,7 +78,7 @@ const Dashboard = () => {
         <div className="flex items-center justify-center mt-5">
           <Link
             to="/courses"
-            className="px-5 text-center bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 rounded-lg"
+            className="px-5 text-center bg-primaryyellow hover:bg-yellow-600 text-black font-semibold py-3 rounded-lg"
           >
             View all courses
           </Link>

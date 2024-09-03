@@ -129,7 +129,7 @@ const EditProfile = () => {
         {/* View All Courses Button */}
         <Link
           to="/courses"
-          className="w-auto px-5 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 rounded-lg"
+          className="w-auto px-5 bg-primaryyellow hover:bg-yellow-600 text-black font-semibold py-3 rounded-lg"
         >
           View all courses
         </Link>

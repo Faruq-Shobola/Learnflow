@@ -1,6 +1,25 @@
 # Getting Started with Create React App
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Prerequisites
+
+Before running this project, make sure you have the following:
+
+- Create a Firebase account at [https://firebase.google.com/](https://firebase.google.com/)
+- Set up your Firebase project and obtain the necessary credentials
+- Add the Firebase environment variables to your project
+- Enable email and password authentication in your Firebase project
+
+Create a `.env` file in the root and add the necesssary Firebase environment variables. For example
+```bash
+REACT_APP_API_KEY=your-api-kei
+REACT_APP_AUTH_DOMAIN=your-auth-domain
+REACT_APP_PROJECT_ID=your-project-id
+REACT_APP_STORAGE_BUCKET=your-storage-bucket
+REACT_APP_MESSAGING_SENDER_ID=your-sender-id
+REACT_APP_APP_ID=your-app-id
+REACT_APP_MEASUREMENT_ID=your-measurement-id
+```
 
 ## Available Scripts
 
